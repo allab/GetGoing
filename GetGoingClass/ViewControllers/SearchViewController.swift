@@ -25,13 +25,45 @@ class SearchViewController: UIViewController {
 
     @IBAction func searchButtonAction(_ sender: UIButton) {
         print("search button was tapped")
-        guard let query = searchParameter else {
+        guard let query = searchTextField.text else {
             print("query is nil")
             return
         }
+        searchTextField.resignFirstResponder()
+
         GooglePlacesAPI.requestPlaces(query) { (status, json) in
             print(json ?? "")
+            guard let jsonObj = json else { return }
+            let results = APIParser.parseNearbySearchResults(jsonObj: jsonObj)
+
+            if results.isEmpty {
+                // TODO: - Present an alert
+                // On the main thread!
+                DispatchQueue.main.async {
+                    self.presentErrorAlert(message: "No results")
+                }
+            } else {
+                self.presentSearchResults()
+            }
         }
+    }
+
+    func presentSearchResults() {
+        let searchResultsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsViewController")
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(searchResultsViewController, animated: true)
+        }
+    }
+
+    func presentErrorAlert(title: String = "Error", message: String?) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okButtonAction = UIAlertAction(title: "Ok",
+                                     style: .default,
+                                     handler: nil)
+        alert.addAction(okButtonAction)
+        present(alert, animated: true)
     }
 }
 
