@@ -36,12 +36,23 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UYR-yd-ngZ">
+                        <rect key="frame" x="10" y="29" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="UYR-yd-ngZ" secondAttribute="height" multiplier="1:1" id="MuN-T0-8Nf"/>
+                            <constraint firstAttribute="width" constant="60" id="idd-zx-bnp"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="wWh-Bs-Emb" secondAttribute="bottom" constant="16" id="NCE-uz-LP8"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UYR-yd-ngZ" secondAttribute="bottom" constant="10" id="aEb-HK-cja"/>
                     <constraint firstItem="wWh-Bs-Emb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="64" id="bBj-K2-tZU"/>
                     <constraint firstItem="wWh-Bs-Emb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="baH-PU-SjG"/>
                     <constraint firstAttribute="trailing" secondItem="wWh-Bs-Emb" secondAttribute="trailing" constant="16" id="deA-Hg-0Ab"/>
+                    <constraint firstItem="UYR-yd-ngZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="g9p-j3-ff3"/>
+                    <constraint firstItem="UYR-yd-ngZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="khh-q9-9ZS"/>
+                    <constraint firstItem="UYR-yd-ngZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vrY-hO-BUh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

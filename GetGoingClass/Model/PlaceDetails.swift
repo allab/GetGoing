@@ -13,6 +13,11 @@ class PlaceDetails {
     var id: String
     var name: String?
     var vicinity: String?
+    var formattedAddress: String?
+
+    var address: String? {
+        return formattedAddress ?? vicinity
+    }
 
     init?(json: [String: Any]) {
         guard let id = json["id"] as? String else { return nil }
@@ -20,5 +25,6 @@ class PlaceDetails {
 
         self.name = json["name"] as? String
         self.vicinity = json["vicinity"] as? String
+        self.formattedAddress = json["formatted_address"] as? String
     }
 }

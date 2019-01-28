@@ -10,7 +10,15 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
 
+    // MARK: - Outlets
+
     @IBOutlet weak var tableView: UITableView!
+
+    //MARK: - Properties
+
+    var places: [PlaceDetails]!
+
+    // MARK: - View Controller
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,14 +49,14 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return places.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultTableViewCell") as? SearchResultTableViewCell else { return UITableViewCell() }
-
-        cell.nameLabel.text = "hello"
-        cell.vicinityLabel.text = "world"
+        let place = places[indexPath.row]
+        cell.nameLabel.text = place.name
+        cell.vicinityLabel.text = place.address
 
         return cell
     }

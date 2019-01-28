@@ -43,13 +43,15 @@ class SearchViewController: UIViewController {
                     self.presentErrorAlert(message: "No results")
                 }
             } else {
-                self.presentSearchResults()
+                self.presentSearchResults(places: results)
             }
         }
     }
 
-    func presentSearchResults() {
-        let searchResultsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsViewController")
+    func presentSearchResults(places: [PlaceDetails]) {
+        guard let searchResultsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsViewController") as? SearchResultsViewController else { return }
+
+        searchResultsViewController.places = places
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(searchResultsViewController, animated: true)
         }
