@@ -20,20 +20,26 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="wWh-Bs-Emb">
-                        <rect key="frame" x="64" y="16" width="240" height="85.5"/>
+                        <rect key="frame" x="80" y="16" width="224" height="85.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlh-mf-Eyb">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="224" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arg-NC-cnY">
-                                <rect key="frame" x="0.0" y="65" width="240" height="20.5"/>
+                                <rect key="frame" x="0.0" y="32" width="224" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wZw-f6-fMa" customClass="RatingControl" customModule="GetGoingClass" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="63.5" width="224" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Ijj-oX-6BN"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                     </stackView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UYR-yd-ngZ">
@@ -47,9 +53,9 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="wWh-Bs-Emb" secondAttribute="bottom" constant="16" id="NCE-uz-LP8"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UYR-yd-ngZ" secondAttribute="bottom" constant="10" id="aEb-HK-cja"/>
-                    <constraint firstItem="wWh-Bs-Emb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="64" id="bBj-K2-tZU"/>
                     <constraint firstItem="wWh-Bs-Emb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="baH-PU-SjG"/>
                     <constraint firstAttribute="trailing" secondItem="wWh-Bs-Emb" secondAttribute="trailing" constant="16" id="deA-Hg-0Ab"/>
+                    <constraint firstItem="wWh-Bs-Emb" firstAttribute="leading" secondItem="UYR-yd-ngZ" secondAttribute="trailing" constant="10" id="eZ6-dC-Hta"/>
                     <constraint firstItem="UYR-yd-ngZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="g9p-j3-ff3"/>
                     <constraint firstItem="UYR-yd-ngZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="khh-q9-9ZS"/>
                     <constraint firstItem="UYR-yd-ngZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vrY-hO-BUh"/>
@@ -57,7 +63,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="iconImageView" destination="UYR-yd-ngZ" id="o4e-J4-Cfg"/>
                 <outlet property="nameLabel" destination="Jlh-mf-Eyb" id="Xfw-FE-CA4"/>
+                <outlet property="rating" destination="wZw-f6-fMa" id="1CX-Sg-vsT"/>
                 <outlet property="vicinityLabel" destination="arg-NC-cnY" id="Q8n-Xu-ZKR"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="174.51274362818592"/>

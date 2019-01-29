@@ -57,9 +57,16 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         let place = places[indexPath.row]
         cell.nameLabel.text = place.name
         cell.vicinityLabel.text = place.address
-
+        if let placeRating = place.rating {
+            cell.rating.rating = Int(placeRating.rounded(.down))
+        }
+        guard let iconStr = place.icon,
+            let iconURL = URL(string: iconStr),
+            let imageData = try? Data(contentsOf: iconURL) else {
+                cell.iconImageView.image = UIImage(named: "StarEmpty")
+                return cell
+        }
+        cell.iconImageView.image = UIImage(data: imageData)
         return cell
     }
-
-
 }

@@ -14,7 +14,8 @@ class PlaceDetails {
     var name: String?
     var vicinity: String?
     var formattedAddress: String?
-
+    var rating: Double?
+    var icon: String?
     var address: String? {
         return formattedAddress ?? vicinity
     }
@@ -26,5 +27,7 @@ class PlaceDetails {
         self.name = json["name"] as? String
         self.vicinity = json["vicinity"] as? String
         self.formattedAddress = json["formatted_address"] as? String
+        self.rating = json["rating"] as? Double
+        self.icon = json["icon"] as? String
     }
 }

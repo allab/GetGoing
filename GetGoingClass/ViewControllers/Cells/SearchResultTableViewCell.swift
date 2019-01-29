@@ -10,8 +10,11 @@ import UIKit
 
 class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
-    
+    @IBOutlet weak var rating: RatingControl!
     @IBOutlet weak var vicinityLabel: UILabel!
+
+    @IBOutlet weak var iconImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

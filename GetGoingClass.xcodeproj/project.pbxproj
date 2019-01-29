@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D2F889321FFBE930040F2D5 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F889221FFBE930040F2D5 /* RatingControl.swift */; };
 		5D83998F21EFE1D90040821A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D83998E21EFE1D90040821A /* AppDelegate.swift */; };
 		5D83999421EFE1D90040821A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D83999221EFE1D90040821A /* Main.storyboard */; };
 		5D83999621EFE1DB0040821A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D83999521EFE1DB0040821A /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D2F889221FFBE930040F2D5 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		5D83998B21EFE1D90040821A /* GetGoingClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetGoingClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D83998E21EFE1D90040821A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D83999321EFE1D90040821A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D2F889121FFBE510040F2D5 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D2F889221FFBE930040F2D5 /* RatingControl.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
 		5D83998221EFE1D90040821A = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 		5D8399A021EFFCEA0040821A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5D2F889121FFBE510040F2D5 /* Custom Views */,
 				5DEA834421F9377C00D4A772 /* Cells */,
 				5D8399A121EFFE2D0040821A /* SearchViewController.swift */,
 				5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */,
@@ -208,6 +219,7 @@
 				5D83998F21EFE1D90040821A /* AppDelegate.swift in Sources */,
 				5D8399C221F688330040821A /* Constants.swift in Sources */,
 				5D8399C721F691F80040821A /* GooglePlacesAPI.swift in Sources */,
+				5D2F889321FFBE930040F2D5 /* RatingControl.swift in Sources */,
 				5DEA834721F937D200D4A772 /* SearchResultTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
