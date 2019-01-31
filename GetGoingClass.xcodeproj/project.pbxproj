@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D2F889321FFBE930040F2D5 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F889221FFBE930040F2D5 /* RatingControl.swift */; };
+		5D2F88982202606E0040F2D5 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F88972202606E0040F2D5 /* LocationService.swift */; };
 		5D83998F21EFE1D90040821A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D83998E21EFE1D90040821A /* AppDelegate.swift */; };
 		5D83999421EFE1D90040821A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D83999221EFE1D90040821A /* Main.storyboard */; };
 		5D83999621EFE1DB0040821A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D83999521EFE1DB0040821A /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		5D2F889221FFBE930040F2D5 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		5D2F88972202606E0040F2D5 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		5D83998B21EFE1D90040821A /* GetGoingClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetGoingClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D83998E21EFE1D90040821A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D83999321EFE1D90040821A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
+		5D2F88962202601A0040F2D5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5D2F88972202606E0040F2D5 /* LocationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5D83998221EFE1D90040821A = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		5D83998D21EFE1D90040821A /* GetGoingClass */ = {
 			isa = PBXGroup;
 			children = (
+				5D2F88962202601A0040F2D5 /* Services */,
 				5DEA833D21F91BC900D4A772 /* Model */,
 				5D8399A021EFFCEA0040821A /* ViewControllers */,
 				5D8399C321F6888D0040821A /* Networking */,
@@ -217,6 +228,7 @@
 				5D8399A221EFFE2D0040821A /* SearchViewController.swift in Sources */,
 				5D8399C521F689050040821A /* NetworkingLayer.swift in Sources */,
 				5D83998F21EFE1D90040821A /* AppDelegate.swift in Sources */,
+				5D2F88982202606E0040F2D5 /* LocationService.swift in Sources */,
 				5D8399C221F688330040821A /* Constants.swift in Sources */,
 				5D8399C721F691F80040821A /* GooglePlacesAPI.swift in Sources */,
 				5D2F889321FFBE930040F2D5 /* RatingControl.swift in Sources */,

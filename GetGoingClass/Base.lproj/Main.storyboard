@@ -21,44 +21,67 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shutterstock" translatesAutoresizingMaskIntoConstraints="NO" id="TZg-S5-ynh">
                                 <rect key="frame" x="0.0" y="64" width="375" height="133.5"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L5x-yb-qj0">
-                                <rect key="frame" x="20" y="207.5" width="335" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eo6-fu-aAI">
+                                <rect key="frame" x="16" y="213.5" width="343" height="68"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ic9-pM-O8s">
-                                        <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
-                                        <state key="normal" image="filtersDefault"/>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start typing your request" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lib-wf-Mmo">
-                                        <rect key="frame" x="35" y="0.0" width="242" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcl-40-uQl">
-                                        <rect key="frame" x="287" y="0.0" width="48" height="30"/>
-                                        <state key="normal" title="Search"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L5x-yb-qj0">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ic9-pM-O8s">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
+                                                <state key="normal" image="filtersDefault"/>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start typing your request" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lib-wf-Mmo">
+                                                <rect key="frame" x="35" y="0.0" width="250" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcl-40-uQl">
+                                                <rect key="frame" x="295" y="0.0" width="48" height="30"/>
+                                                <state key="normal" title="Search"/>
+                                                <connections>
+                                                    <action selector="searchButtonAction:" destination="Woa-RC-gxL" eventType="touchUpInside" id="Lqh-nB-Grr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O56-5M-kdx">
+                                        <rect key="frame" x="0.0" y="40" width="343" height="29"/>
+                                        <segments>
+                                            <segment title="text search"/>
+                                            <segment title="location search"/>
+                                        </segments>
                                         <connections>
-                                            <action selector="searchButtonAction:" destination="Woa-RC-gxL" eventType="touchUpInside" id="Lqh-nB-Grr"/>
+                                            <action selector="segmentedObserver:" destination="Woa-RC-gxL" eventType="valueChanged" id="YUT-Qt-AkD"/>
                                         </connections>
-                                    </button>
+                                    </segmentedControl>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lFI-uD-B0z">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="L5x-yb-qj0" secondAttribute="trailing" constant="20" id="1uy-Ai-ZAh"/>
+                            <constraint firstItem="eo6-fu-aAI" firstAttribute="leading" secondItem="Yud-cm-bYW" secondAttribute="leading" constant="16" id="2JJ-bt-GWL"/>
                             <constraint firstItem="TZg-S5-ynh" firstAttribute="leading" secondItem="Yud-cm-bYW" secondAttribute="leading" id="69m-71-OZs"/>
+                            <constraint firstItem="lFI-uD-B0z" firstAttribute="centerX" secondItem="zYa-jv-pfb" secondAttribute="centerX" id="BIw-ab-sdu"/>
                             <constraint firstItem="TZg-S5-ynh" firstAttribute="height" secondItem="zYa-jv-pfb" secondAttribute="height" multiplier="0.2" id="DIA-37-CQF"/>
+                            <constraint firstItem="lFI-uD-B0z" firstAttribute="centerY" secondItem="zYa-jv-pfb" secondAttribute="centerY" id="Pzl-ho-Pue"/>
+                            <constraint firstItem="Yud-cm-bYW" firstAttribute="trailing" secondItem="eo6-fu-aAI" secondAttribute="trailing" constant="16" id="RZb-NO-HWd"/>
+                            <constraint firstItem="eo6-fu-aAI" firstAttribute="top" secondItem="TZg-S5-ynh" secondAttribute="bottom" constant="16" id="V3d-E7-GrA"/>
                             <constraint firstItem="TZg-S5-ynh" firstAttribute="top" secondItem="Yud-cm-bYW" secondAttribute="top" id="WG6-q6-b3P"/>
-                            <constraint firstItem="L5x-yb-qj0" firstAttribute="leading" secondItem="Yud-cm-bYW" secondAttribute="leading" constant="20" id="exd-aO-RnY"/>
-                            <constraint firstItem="L5x-yb-qj0" firstAttribute="top" secondItem="TZg-S5-ynh" secondAttribute="bottom" constant="10" id="mvQ-bq-8uO"/>
                             <constraint firstItem="Yud-cm-bYW" firstAttribute="trailing" secondItem="TZg-S5-ynh" secondAttribute="trailing" id="wNF-gE-gVn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yud-cm-bYW"/>
                     </view>
                     <navigationItem key="navigationItem" id="Qdc-2y-Ysw"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="lFI-uD-B0z" id="n3f-hv-uWK"/>
+                        <outlet property="searchButton" destination="Lcl-40-uQl" id="WnI-lb-5Xz"/>
                         <outlet property="searchTextField" destination="lib-wf-Mmo" id="rVd-XZ-b6s"/>
+                        <outlet property="segmentControl" destination="O56-5M-kdx" id="THf-fU-292"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ko3-zI-hDw" userLabel="First Responder" sceneMemberID="firstResponder"/>

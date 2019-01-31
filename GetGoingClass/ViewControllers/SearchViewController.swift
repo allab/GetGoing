@@ -7,20 +7,49 @@
 //
 
 import UIKit
+import CoreLocation
 
 class SearchViewController: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var searchButton: UIButton!
 
     // MARK: - Properties
     var searchParameter: String?
+    var currentLocation: CLLocationCoordinate2D?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        activityIndicator.isHidden = true
         searchTextField.delegate = self
+    }
+
+    //MARK: - Activity Indicator
+
+    func showActivityIndicator() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        searchButton.isEnabled = false
+    }
+
+    func hideActivityIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+        searchButton.isEnabled = true
+    }
+
+    
+    @IBAction func segmentedObserver(_ sender: UISegmentedControl) {
+        print("segmented control option was changed to \(sender.selectedSegmentIndex)")
+        if sender.selectedSegmentIndex == 1 {
+            LocationService.shared.startUpdatingLocation()
+            LocationService.shared.delegate = self
+        }
     }
 
     @IBAction func searchButtonAction(_ sender: UIButton) {
@@ -29,23 +58,54 @@ class SearchViewController: UIViewController {
             print("query is nil")
             return
         }
+
         searchTextField.resignFirstResponder()
+        showActivityIndicator()
 
-        GooglePlacesAPI.requestPlaces(query) { (status, json) in
-            print(json ?? "")
-            guard let jsonObj = json else { return }
-            let results = APIParser.parseNearbySearchResults(jsonObj: jsonObj)
-
-            if results.isEmpty {
-                // TODO: - Present an alert
-                // On the main thread!
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            GooglePlacesAPI.requestPlaces(query) { (status, json) in
+                print(json ?? "")
                 DispatchQueue.main.async {
-                    self.presentErrorAlert(message: "No results")
+                    self.hideActivityIndicator()
                 }
-            } else {
-                self.presentSearchResults(places: results)
+                guard let jsonObj = json else { return }
+                let results = APIParser.parseNearbySearchResults(jsonObj: jsonObj)
+
+                if results.isEmpty {
+                    // TODO: - Present an alert
+                    // On the main thread!
+                    DispatchQueue.main.async {
+                        self.presentErrorAlert(message: "No results")
+                    }
+                } else {
+                    self.presentSearchResults(places: results)
+                }
             }
+        case 1:
+            guard let location = currentLocation else { return }
+            GooglePlacesAPI.requestPlacesNearby(for: location, radius: 10000.0, query) { (status, json) in
+                print(json ?? "")
+                DispatchQueue.main.async {
+                    self.hideActivityIndicator()
+                }
+                guard let jsonObj = json else { return }
+                let results = APIParser.parseNearbySearchResults(jsonObj: jsonObj)
+
+                if results.isEmpty {
+                    // TODO: - Present an alert
+                    // On the main thread!
+                    DispatchQueue.main.async {
+                        self.presentErrorAlert(message: "No results")
+                    }
+                } else {
+                    self.presentSearchResults(places: results)
+                }
+            }
+        default:
+            break
         }
+
     }
 
     func presentSearchResults(places: [PlaceDetails]) {
@@ -85,5 +145,12 @@ extension SearchViewController: UITextFieldDelegate {
             searchParameter = textField.text
             print(textField.text ?? "")
         }
+    }
+}
+
+extension SearchViewController: LocationServiceDelegate {
+    func didUpdateLocation(location: CLLocation) {
+        print("latitude \(location.coordinate.latitude) longitude \(location.coordinate.longitude)")
+        currentLocation = location.coordinate
     }
 }

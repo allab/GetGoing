@@ -15,4 +15,5 @@ class Constants {
     static let scheme = "https"
     static let host = "maps.googleapis.com"
     static let textPlaceSearch = "/maps/api/place/textsearch/json"
+    static let nearbySearch = "/maps/api/place/nearbysearch/json"
 }
