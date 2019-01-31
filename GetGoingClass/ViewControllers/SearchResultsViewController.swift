@@ -69,4 +69,8 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         cell.iconImageView.image = UIImage(data: imageData)
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("row was selected at \(indexPath.section) \(indexPath.row)")
+    }
 }
