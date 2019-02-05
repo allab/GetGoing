@@ -43,6 +43,16 @@ class SearchViewController: UIViewController {
         searchButton.isEnabled = true
     }
 
+    @IBAction func loadLastSavedResults(_ sender: UIButton) {
+        
+    }
+
+    @IBAction func presentFilters(_ sender: UIButton) {
+//        performSegue(withIdentifier: "FiltersSegue", sender: self)
+        guard let filtersViewController = UIStoryboard(name: "Filters", bundle: nil).instantiateViewController(withIdentifier: "FiltersViewController") as? FiltersViewController else { return }
+        present(filtersViewController, animated: true, completion: nil)
+
+    }
     
     @IBAction func segmentedObserver(_ sender: UISegmentedControl) {
         print("segmented control option was changed to \(sender.selectedSegmentIndex)")

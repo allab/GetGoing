@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pTR-fA-5Ge">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Filters View Controller-->
+        <scene sceneID="3fJ-FF-AjL">
+            <objects>
+                <viewController storyboardIdentifier="FiltersViewController" id="pTR-fA-5Ge" customClass="FiltersViewController" customModule="GetGoingClass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Em7-Mz-KX7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ii-Qu-44Y">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Filters" id="wlX-H7-r1A">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="Dda-6T-lsg">
+                                            <connections>
+                                                <action selector="closeButtonAction:" destination="pTR-fA-5Ge" id="3Tg-Ug-p52"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XaG-6x-guK"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="g9i-AA-gGr">
+                                <rect key="frame" x="16" y="80" width="343" height="161"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VON-nO-wUY">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="100" maxValue="50000" minimumValueImage="radius" maximumValueImage="radiusBorder" translatesAutoresizingMaskIntoConstraints="NO" id="XP8-Af-Zrz">
+                                        <rect key="frame" x="-2" y="36.5" width="347" height="42"/>
+                                        <color key="thumbTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="radiusSliderChangedValue:" destination="pTR-fA-5Ge" eventType="valueChanged" id="pGn-we-AoX"/>
+                                        </connections>
+                                    </slider>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TqX-z0-2eH">
+                                        <rect key="frame" x="0.0" y="93.5" width="343" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Rank By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiJ-JT-Uum">
+                                                <rect key="frame" x="0.0" y="0.0" width="285" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFh-EU-2qE">
+                                                <rect key="frame" x="301" y="0.0" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="110" translatesAutoresizingMaskIntoConstraints="NO" id="V80-1v-eYD">
+                                        <rect key="frame" x="0.0" y="130" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8C-xB-huk">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="piX-e5-SJW">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="switchValueChanged:" destination="pTR-fA-5Ge" eventType="valueChanged" id="CT9-Yk-Qxb"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRe-tk-usi">
+                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="C4u-zR-taQ" firstAttribute="trailing" secondItem="g9i-AA-gGr" secondAttribute="trailing" constant="16" id="2fG-gW-r6P"/>
+                            <constraint firstItem="C4u-zR-taQ" firstAttribute="trailing" secondItem="TRe-tk-usi" secondAttribute="trailing" id="3NJ-ZH-5kR"/>
+                            <constraint firstItem="TRe-tk-usi" firstAttribute="leading" secondItem="Em7-Mz-KX7" secondAttribute="leading" id="AQI-qr-ANi"/>
+                            <constraint firstItem="0Ii-Qu-44Y" firstAttribute="leading" secondItem="C4u-zR-taQ" secondAttribute="leading" id="ECb-aw-jY0"/>
+                            <constraint firstItem="C4u-zR-taQ" firstAttribute="bottom" secondItem="TRe-tk-usi" secondAttribute="bottom" id="HoL-AN-bOP"/>
+                            <constraint firstItem="0Ii-Qu-44Y" firstAttribute="trailing" secondItem="C4u-zR-taQ" secondAttribute="trailing" id="Vn0-Tu-86n"/>
+                            <constraint firstItem="g9i-AA-gGr" firstAttribute="top" secondItem="0Ii-Qu-44Y" secondAttribute="bottom" constant="16" id="Ztl-bC-c2w"/>
+                            <constraint firstItem="g9i-AA-gGr" firstAttribute="leading" secondItem="C4u-zR-taQ" secondAttribute="leading" constant="16" id="lfJ-SA-kjE"/>
+                            <constraint firstItem="0Ii-Qu-44Y" firstAttribute="top" secondItem="C4u-zR-taQ" secondAttribute="top" id="sAJ-TJ-SdW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="C4u-zR-taQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="isOpenNow" destination="piX-e5-SJW" id="oZe-1d-mwZ"/>
+                        <outlet property="pickerView" destination="TRe-tk-usi" id="dix-DW-QhJ"/>
+                        <outlet property="radiusSlider" destination="XP8-Af-Zrz" id="fOR-LG-F7E"/>
+                        <outlet property="rankByLabel" destination="fiJ-JT-Uum" id="xhS-cQ-Nxx"/>
+                        <outlet property="rankBySelectedLabel" destination="EFh-EU-2qE" id="SZ2-wq-khz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KUK-YX-zYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-257" y="122"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="radius" width="42.5" height="42.5"/>
+        <image name="radiusBorder" width="42.5" height="42.5"/>
+    </resources>
+</document>

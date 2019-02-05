@@ -17,6 +17,8 @@
 		5D8399C221F688330040821A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8399C121F688330040821A /* Constants.swift */; };
 		5D8399C521F689050040821A /* NetworkingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8399C421F689050040821A /* NetworkingLayer.swift */; };
 		5D8399C721F691F80040821A /* GooglePlacesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8399C621F691F80040821A /* GooglePlacesAPI.swift */; };
+		5DE95A762208E9400097DDDB /* Filters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DE95A752208E9400097DDDB /* Filters.storyboard */; };
+		5DE95A782208E9F80097DDDB /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE95A772208E9F80097DDDB /* FiltersViewController.swift */; };
 		5DEA833F21F91C0C00D4A772 /* PlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEA833E21F91C0C00D4A772 /* PlaceDetails.swift */; };
 		5DEA834121F91D0500D4A772 /* APIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEA834021F91D0500D4A772 /* APIParser.swift */; };
 		5DEA834321F9354500D4A772 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */; };
@@ -37,6 +39,8 @@
 		5D8399C121F688330040821A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5D8399C421F689050040821A /* NetworkingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLayer.swift; sourceTree = "<group>"; };
 		5D8399C621F691F80040821A /* GooglePlacesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPI.swift; sourceTree = "<group>"; };
+		5DE95A752208E9400097DDDB /* Filters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filters.storyboard; sourceTree = "<group>"; };
+		5DE95A772208E9F80097DDDB /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		5DEA833E21F91C0C00D4A772 /* PlaceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetails.swift; sourceTree = "<group>"; };
 		5DEA834021F91D0500D4A772 /* APIParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIParser.swift; sourceTree = "<group>"; };
 		5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				5D83999521EFE1DB0040821A /* Assets.xcassets */,
 				5D83999721EFE1DB0040821A /* LaunchScreen.storyboard */,
 				5D83999A21EFE1DB0040821A /* Info.plist */,
+				5DE95A752208E9400097DDDB /* Filters.storyboard */,
 			);
 			path = GetGoingClass;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 				5DEA834421F9377C00D4A772 /* Cells */,
 				5D8399A121EFFE2D0040821A /* SearchViewController.swift */,
 				5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */,
+				5DE95A772208E9F80097DDDB /* FiltersViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -211,6 +217,7 @@
 				5D83999921EFE1DB0040821A /* LaunchScreen.storyboard in Resources */,
 				5D83999621EFE1DB0040821A /* Assets.xcassets in Resources */,
 				5DEA834821F937D200D4A772 /* SearchResultTableViewCell.xib in Resources */,
+				5DE95A762208E9400097DDDB /* Filters.storyboard in Resources */,
 				5D83999421EFE1D90040821A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +239,7 @@
 				5D8399C221F688330040821A /* Constants.swift in Sources */,
 				5D8399C721F691F80040821A /* GooglePlacesAPI.swift in Sources */,
 				5D2F889321FFBE930040F2D5 /* RatingControl.swift in Sources */,
+				5DE95A782208E9F80097DDDB /* FiltersViewController.swift in Sources */,
 				5DEA834721F937D200D4A772 /* SearchResultTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

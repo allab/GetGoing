@@ -8,7 +8,17 @@
 
 import Foundation
 
-class PlaceDetails {
+class PlaceDetails: NSObject, NSCoding {
+    struct PropertyKey {
+        static let idKey = "id"
+        static let nameKey = "name"
+        static let vicinityKey = "vicinity"
+        static let formattedAddressKey = "formattedAddress"
+        static let ratingKey = "rating"
+        static let iconKey = "icon"
+    }
+
+    // MARK : - Properties
 
     var id: String
     var name: String?
@@ -18,6 +28,39 @@ class PlaceDetails {
     var icon: String?
     var address: String? {
         return formattedAddress ?? vicinity
+    }
+
+    //MARK: - NSCoding
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: PropertyKey.idKey)
+        aCoder.encode(name, forKey: PropertyKey.nameKey)
+        aCoder.encode(vicinity, forKey: PropertyKey.vicinityKey)
+        aCoder.encode(formattedAddress, forKey: PropertyKey.formattedAddressKey)
+        aCoder.encode(rating, forKey: PropertyKey.ratingKey)
+        aCoder.encode(icon, forKey: PropertyKey.iconKey)
+
+    }
+
+    required convenience init?(coder aDecoder: NSCoder) {
+        let id = aDecoder.decodeObject(forKey: PropertyKey.idKey) as? String ?? ""
+        let name = aDecoder.decodeObject(forKey: PropertyKey.nameKey) as? String
+        let vicinity = aDecoder.decodeObject(forKey: PropertyKey.vicinityKey) as? String
+        let formattedAddress = aDecoder.decodeObject(forKey: PropertyKey.formattedAddressKey) as? String
+        let rating = aDecoder.decodeDouble(forKey: PropertyKey.ratingKey)
+        let icon = aDecoder.decodeObject(forKey: PropertyKey.iconKey) as? String
+
+        self.init(id: id, name: name, vicinity: vicinity, formattedAddress: formattedAddress, rating: rating, icon: icon)
+    }
+
+    // MARK: - Initializers
+
+    init(id: String, name: String?, vicinity: String?, formattedAddress: String?, rating: Double?, icon: String?) {
+        self.id = id
+        self.name = name
+        self.vicinity = vicinity
+        self.formattedAddress = formattedAddress
+        self.rating = rating
+        self.icon = icon
     }
 
     init?(json: [String: Any]) {

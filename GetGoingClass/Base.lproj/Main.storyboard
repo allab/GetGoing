@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="133.5"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eo6-fu-aAI">
-                                <rect key="frame" x="16" y="213.5" width="343" height="68"/>
+                                <rect key="frame" x="16" y="213.5" width="343" height="108"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L5x-yb-qj0">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -30,6 +30,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ic9-pM-O8s">
                                                 <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
                                                 <state key="normal" image="filtersDefault"/>
+                                                <connections>
+                                                    <action selector="presentFilters:" destination="Woa-RC-gxL" eventType="touchUpInside" id="WDK-l4-m08"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start typing your request" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lib-wf-Mmo">
                                                 <rect key="frame" x="35" y="0.0" width="250" height="30"/>
@@ -56,6 +59,13 @@
                                             <action selector="segmentedObserver:" destination="Woa-RC-gxL" eventType="valueChanged" id="YUT-Qt-AkD"/>
                                         </connections>
                                     </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMj-4n-hN1">
+                                        <rect key="frame" x="0.0" y="78" width="343" height="30"/>
+                                        <state key="normal" title="Load last saved results"/>
+                                        <connections>
+                                            <action selector="loadLastSavedResults:" destination="Woa-RC-gxL" eventType="touchUpInside" id="PkN-jS-7m6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lFI-uD-B0z">
@@ -82,11 +92,20 @@
                         <outlet property="searchButton" destination="Lcl-40-uQl" id="WnI-lb-5Xz"/>
                         <outlet property="searchTextField" destination="lib-wf-Mmo" id="rVd-XZ-b6s"/>
                         <outlet property="segmentControl" destination="O56-5M-kdx" id="THf-fU-292"/>
+                        <segue destination="OJ5-oz-8Di" kind="showDetail" identifier="FiltersSegue" id="rlH-9V-tHh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ko3-zI-hDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="868" y="-237.03148425787109"/>
+        </scene>
+        <!--Filters-->
+        <scene sceneID="4IY-PQ-ZKA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Filters" id="OJ5-oz-8Di" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vSY-q0-YG6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868" y="300"/>
         </scene>
         <!--Search Results View Controller-->
         <scene sceneID="Amz-w2-VLu">
