@@ -142,8 +142,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ce8-xc-1db">
+                                <rect key="frame" x="0.0" y="20" width="375" height="29"/>
+                                <segments>
+                                    <segment title="Sort by name"/>
+                                    <segment title="Sort by rating"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sortingSegmentedControlValueChanged:" destination="U1I-B9-IIa" eventType="valueChanged" id="FNh-Ul-RbV"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Im8-o9-GGu">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -152,11 +162,15 @@
                             <constraint firstItem="WqP-tV-QAA" firstAttribute="trailing" secondItem="Im8-o9-GGu" secondAttribute="trailing" id="4Id-Kv-wbH"/>
                             <constraint firstItem="WqP-tV-QAA" firstAttribute="bottom" secondItem="Im8-o9-GGu" secondAttribute="bottom" id="8Ck-Le-82I"/>
                             <constraint firstItem="Im8-o9-GGu" firstAttribute="leading" secondItem="WqP-tV-QAA" secondAttribute="leading" id="Lm9-G8-1hT"/>
-                            <constraint firstItem="Im8-o9-GGu" firstAttribute="top" secondItem="WqP-tV-QAA" secondAttribute="top" id="MuC-mD-nxr"/>
+                            <constraint firstItem="Im8-o9-GGu" firstAttribute="top" secondItem="ce8-xc-1db" secondAttribute="bottom" constant="2" id="VE6-ge-mQd"/>
+                            <constraint firstItem="ce8-xc-1db" firstAttribute="top" secondItem="WqP-tV-QAA" secondAttribute="top" id="j8b-sQ-NtZ"/>
+                            <constraint firstItem="ce8-xc-1db" firstAttribute="leading" secondItem="WqP-tV-QAA" secondAttribute="leading" id="scc-LY-VKD"/>
+                            <constraint firstItem="WqP-tV-QAA" firstAttribute="trailing" secondItem="ce8-xc-1db" secondAttribute="trailing" id="zYt-WM-bgF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WqP-tV-QAA"/>
                     </view>
                     <connections>
+                        <outlet property="sortingSegmentedControl" destination="ce8-xc-1db" id="i27-EH-I41"/>
                         <outlet property="tableView" destination="Im8-o9-GGu" id="szj-pt-3oM"/>
                     </connections>
                 </viewController>

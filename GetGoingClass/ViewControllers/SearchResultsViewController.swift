@@ -13,6 +13,7 @@ class SearchResultsViewController: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sortingSegmentedControl: UISegmentedControl!
 
     //MARK: - Properties
 
@@ -28,11 +29,24 @@ class SearchResultsViewController: UIViewController {
 
         let nib = UINib(nibName: "SearchResultTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SearchResultTableViewCell")
-        print("viewDidLoad")
-        tableView.reloadData()
+        updateSorting()
     }
     
+    @IBAction func sortingSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+        updateSorting()
+    }
 
+    private func updateSorting() {
+        switch sortingSegmentedControl.selectedSegmentIndex {
+        case 0:
+            places.sort(by: { $0.name ?? "" < $1.name ?? "" })
+        case 1:
+            places.sort(by: { $0.rating ?? 0.0 > $1.rating ?? 0.0 })
+        default:
+            break;
+        }
+        tableView.reloadData()
+    }
     /*
      // MARK: - Navigation
 
