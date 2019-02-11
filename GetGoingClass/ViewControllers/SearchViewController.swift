@@ -44,7 +44,11 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func loadLastSavedResults(_ sender: UIButton) {
-        
+        guard let places = loadPlacesFromLocalStorage() else {
+            presentErrorAlert(message: "No results were previously stored")
+            return
+        }
+        presentSearchResults(places: places)
     }
 
     @IBAction func presentFilters(_ sender: UIButton) {
@@ -82,6 +86,8 @@ class SearchViewController: UIViewController {
                 guard let jsonObj = json else { return }
                 let results = APIParser.parseNearbySearchResults(jsonObj: jsonObj)
 
+                self.savePlacesToLocalStorage(places: results)
+
                 if results.isEmpty {
                     // TODO: - Present an alert
                     // On the main thread!
@@ -101,6 +107,7 @@ class SearchViewController: UIViewController {
                 }
                 guard let jsonObj = json else { return }
                 let results = APIParser.parseNearbySearchResults(jsonObj: jsonObj)
+                self.savePlacesToLocalStorage(places: results)
 
                 if results.isEmpty {
                     // TODO: - Present an alert
@@ -117,6 +124,8 @@ class SearchViewController: UIViewController {
         }
 
     }
+
+    // MARK: - Navigation methods
 
     func presentSearchResults(places: [PlaceDetails]) {
         guard let searchResultsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsViewController") as? SearchResultsViewController else { return }
@@ -136,6 +145,18 @@ class SearchViewController: UIViewController {
                                      handler: nil)
         alert.addAction(okButtonAction)
         present(alert, animated: true)
+    }
+
+    // MARK: - NSCoding
+
+    func savePlacesToLocalStorage(places: [PlaceDetails]) {
+        // save data to the local storage
+        NSKeyedArchiver.archiveRootObject(places, toFile: Constants.ArchiveURL.path)
+    }
+
+    func loadPlacesFromLocalStorage() -> [PlaceDetails]? {
+        // pull data from the local storage
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Constants.ArchiveURL.path) as? [PlaceDetails]
     }
 }
 

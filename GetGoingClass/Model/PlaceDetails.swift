@@ -36,7 +36,9 @@ class PlaceDetails: NSObject, NSCoding {
         aCoder.encode(name, forKey: PropertyKey.nameKey)
         aCoder.encode(vicinity, forKey: PropertyKey.vicinityKey)
         aCoder.encode(formattedAddress, forKey: PropertyKey.formattedAddressKey)
-        aCoder.encode(rating, forKey: PropertyKey.ratingKey)
+        if let rating = rating {
+            aCoder.encode(rating, forKey: PropertyKey.ratingKey)
+        }
         aCoder.encode(icon, forKey: PropertyKey.iconKey)
 
     }
