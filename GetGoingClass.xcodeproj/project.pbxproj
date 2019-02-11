@@ -27,6 +27,7 @@
 		5DEA834321F9354500D4A772 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */; };
 		5DEA834721F937D200D4A772 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEA834521F937D200D4A772 /* SearchResultTableViewCell.swift */; };
 		5DEA834821F937D200D4A772 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA834621F937D200D4A772 /* SearchResultTableViewCell.xib */; };
+		5DFD82062211CF2B001C8A32 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFD82052211CF2B001C8A32 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		5DEA834521F937D200D4A772 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		5DEA834621F937D200D4A772 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
+		5DFD82052211CF2B001C8A32 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				5D8399A121EFFE2D0040821A /* SearchViewController.swift */,
 				5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */,
 				5DE95A772208E9F80097DDDB /* FiltersViewController.swift */,
+				5DFD82052211CF2B001C8A32 /* DetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				5DE95A8B220BB0950097DDDB /* PhotoViewController.swift in Sources */,
 				5DE95A782208E9F80097DDDB /* FiltersViewController.swift in Sources */,
 				5DEA834721F937D200D4A772 /* SearchResultTableViewCell.swift in Sources */,
+				5DFD82062211CF2B001C8A32 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +411,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PL76JZ2VL9;
 				INFOPLIST_FILE = GetGoingClass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -425,6 +430,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PL76JZ2VL9;
 				INFOPLIST_FILE = GetGoingClass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

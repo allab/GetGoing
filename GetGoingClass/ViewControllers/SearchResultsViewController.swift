@@ -28,18 +28,20 @@ class SearchResultsViewController: UIViewController {
 
         let nib = UINib(nibName: "SearchResultTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SearchResultTableViewCell")
+        print("viewDidLoad")
+        tableView.reloadData()
     }
     
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }
 extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -60,17 +62,27 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         if let placeRating = place.rating {
             cell.rating.rating = Int(placeRating.rounded(.down))
         }
-        guard let iconStr = place.icon,
-            let iconURL = URL(string: iconStr),
-            let imageData = try? Data(contentsOf: iconURL) else {
-                cell.iconImageView.image = UIImage(named: "StarEmpty")
-                return cell
+        DispatchQueue.global(qos: .background).async {
+            if let iconStr = place.icon,
+                let iconURL = URL(string: iconStr),
+                let imageData = try? Data(contentsOf: iconURL) {
+                DispatchQueue.main.async {
+                    cell.iconImageView.image = UIImage(data: imageData)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    cell.iconImageView.image = UIImage(named: "StarEmpty")
+                }
+            }
+
         }
-        cell.iconImageView.image = UIImage(data: imageData)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row was selected at \(indexPath.section) \(indexPath.row)")
+        guard let detailsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { return }
+        detailsViewController.place = places[indexPath.row]
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }

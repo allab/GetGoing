@@ -23,6 +23,7 @@ class RatingControl: UIStackView {
 
     required init(coder: NSCoder) {
         super.init(coder: coder)
+//        self.distribution = .equalSpacing
         setupButtons()
     }
 
