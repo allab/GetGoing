@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 class PlaceDetails: NSObject, NSCoding {
     struct PropertyKey {
         static let idKey = "id"
         static let nameKey = "name"
+        static let latitudeKey = "latitude"
+        static let longitudeKey = "longitude"
         static let vicinityKey = "vicinity"
         static let formattedAddressKey = "formattedAddress"
         static let ratingKey = "rating"
@@ -26,6 +29,7 @@ class PlaceDetails: NSObject, NSCoding {
     var id: String
     var placeID: String
     var name: String?
+    var coordinate: CLLocationCoordinate2D?
     var vicinity: String?
     var formattedAddress: String?
     var rating: Double?
@@ -46,8 +50,11 @@ class PlaceDetails: NSObject, NSCoding {
         if let rating = rating {
             aCoder.encode(rating, forKey: PropertyKey.ratingKey)
         }
+        if let coordinate = coordinate {
+            aCoder.encode(coordinate.latitude, forKey: PropertyKey.latitudeKey)
+            aCoder.encode(coordinate.longitude, forKey: PropertyKey.longitudeKey)
+        }
         aCoder.encode(icon, forKey: PropertyKey.iconKey)
-
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
@@ -58,13 +65,16 @@ class PlaceDetails: NSObject, NSCoding {
         let formattedAddress = aDecoder.decodeObject(forKey: PropertyKey.formattedAddressKey) as? String
         let rating = aDecoder.decodeDouble(forKey: PropertyKey.ratingKey)
         let icon = aDecoder.decodeObject(forKey: PropertyKey.iconKey) as? String
+        let latitude = aDecoder.decodeDouble(forKey: PropertyKey.latitudeKey)
+        let longitude = aDecoder.decodeDouble(forKey: PropertyKey.longitudeKey)
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
 
-        self.init(id: id, placeID: placeID, name: name, vicinity: vicinity, formattedAddress: formattedAddress, rating: rating, icon: icon)
+        self.init(id: id, placeID: placeID, coordinate: coordinate, name: name, vicinity: vicinity, formattedAddress: formattedAddress, rating: rating, icon: icon)
     }
 
     // MARK: - Initializers
 
-    init(id: String, placeID: String, name: String?, vicinity: String?, formattedAddress: String?, rating: Double?, icon: String?) {
+    init(id: String, placeID: String, coordinate: CLLocationCoordinate2D?, name: String?, vicinity: String?, formattedAddress: String?, rating: Double?, icon: String?) {
         self.id = id
         self.placeID = placeID
         self.name = name
@@ -72,6 +82,7 @@ class PlaceDetails: NSObject, NSCoding {
         self.formattedAddress = formattedAddress
         self.rating = rating
         self.icon = icon
+        self.coordinate = coordinate
     }
 
     init?(json: [String: Any]) {
@@ -83,8 +94,19 @@ class PlaceDetails: NSObject, NSCoding {
         self.name = json["name"] as? String
         self.vicinity = json["vicinity"] as? String
         self.formattedAddress = json["formatted_address"] as? String
+
+        if let geometry = json["geometry"] as? [String: Any] {
+            if let location = geometry["location"] as? [String: Any] {
+                if let latitude = location["lat"] as? Double,
+                    let longitude = location["lng"] as? Double {
+                    self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                }
+            }
+        }
         self.rating = json["rating"] as? Double
+
         self.icon = json["icon"] as? String
+
     }
 
     // MARK: - Configuration

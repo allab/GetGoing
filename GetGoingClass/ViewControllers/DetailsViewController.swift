@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailsViewController: UIViewController {
     // MARK: - IBOutlets
 
-    @IBOutlet weak var phoneNumberLabel: UILabel!
-    @IBOutlet weak var websiteLabel: UILabel!
+    @IBOutlet weak var phoneNumberTextView: UITextView!
+    @IBOutlet weak var websiteTextView: UITextView!
+
+    @IBOutlet weak var mapView: MKMapView!
 
     // MARK: - Properties
 
@@ -21,15 +24,40 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = place.name
         loadPlaceDetails()
+        setMapViewCoordinate()
+    }
+
+    func setMapViewCoordinate() {
+        mapView.delegate = self
+
+        guard let coordinate = place.coordinate else { return }
+        let annotation = MKPointAnnotation()
+        annotation.title = place.name
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+        centerMapOnLocation(location: coordinate)
+
+        // indicates in blue user's current location if available
+        mapView.showsUserLocation = true
+    }
+
+    func centerMapOnLocation(location: CLLocationCoordinate2D) {
+        let radius = 5000
+
+        let distance = CLLocationDistance(Double(radius) * 2)
+        let region = MKCoordinateRegion.init(center: location, latitudinalMeters: distance, longitudinalMeters: distance)
+
+        mapView.setRegion(region, animated: true)
     }
 
     private func loadPlaceDetails() {
         GooglePlacesAPI.requestPlaceDetails(for: place.placeID) { (status, json) in
             guard let jsonObj = json else {
                 DispatchQueue.main.async {
-                    self.phoneNumberLabel.isHidden = true
-                    self.websiteLabel.isHidden = true
+                    self.phoneNumberTextView.isHidden = true
+                    self.websiteTextView.isHidden = true
                 }
                 return
             }
@@ -37,17 +65,15 @@ class DetailsViewController: UIViewController {
             DispatchQueue.main.async {
                 if let phoneNumber = self.place.phoneNumber {
 
-                    self.phoneNumberLabel.attributedText = NSMutableAttributedString(string: phoneNumber, attributes: [NSAttributedString.Key.link : phoneNumber])
-
+                    self.phoneNumberTextView.text = phoneNumber
                 } else {
-                    self.phoneNumberLabel.isHidden = true
+                    self.phoneNumberTextView.isHidden = true
                 }
 
                 if let websiteURL = self.place.websiteURL {
-                    self.websiteLabel.attributedText = NSMutableAttributedString(string: websiteURL, attributes: [NSAttributedString.Key.link : websiteURL])
-
+                    self.websiteTextView.text = websiteURL
                 } else {
-                    self.websiteLabel.isHidden = true
+                    self.websiteTextView.isHidden = true
                 }
             }
         }
@@ -63,4 +89,38 @@ class DetailsViewController: UIViewController {
     }
     */
 
+}
+
+extension DetailsViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKind(of: MKUserLocation.self) {
+            return nil
+        }
+
+        let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "reusablePin")
+        // allowing to show extra information in the pin view
+        view.canShowCallout = true
+        // "i" button
+        view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        view.pinTintColor = UIColor.blue
+
+        return view
+    }
+
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let location = view.annotation
+
+        let launchingOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit]
+        if let coordinate = location?.coordinate {
+            location?.mapItem(coordinate: coordinate).openInMaps(launchOptions: launchingOptions)
+        }
+    }
+}
+
+
+extension MKAnnotation {
+    func mapItem(coordinate: CLLocationCoordinate2D) -> MKMapItem {
+        let placemark = MKPlacemark(coordinate: coordinate)
+        return MKMapItem(placemark: placemark)
+    }
 }
